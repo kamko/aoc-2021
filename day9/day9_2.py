@@ -42,12 +42,15 @@ def bfs(map, start):
 
     while len(todo) > 0:
         point = todo.pop(0)
+        if point in seen:
+            continue
+
         seen.add(point)
         basin.append(point)
 
         todo = todo + points_around(map, point, seen)  
 
-    return len(set(basin))
+    return len(basin)
 
 map = load_input()
 
