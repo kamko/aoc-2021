@@ -1,4 +1,4 @@
-from collections import Counter
+from collections import Counter, deque
 
 class Cave:
 
@@ -58,10 +58,11 @@ def load_input():
 
 caves = load_input()
 
-kju = [[caves['start']]]
+kju = deque()
+kju.append([caves['start']])
 res = []
 while len(kju) > 0:
-    r = kju.pop(0)
+    r = kju.popleft()
     if r[-1].id == 'end':
         res.append(r)
 
